@@ -1,0 +1,106 @@
+<div id="app" *ngIf="!showAdminBoard">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="javascript:void(0);" class="navbar-brand">Job Portal</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isLoggedIn" routerLink="job-list">Job List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isLoggedIn" routerLink="job-applied-list">Applied Jobs</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <!-- <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li> -->
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{username}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/profile">Profile</a>
+          <a class="dropdown-item" href="javascript:void(0)" (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+<!-- for admin desing start -->
+<div class="section-user" *ngIf="showAdminBoard">
+  <div class="d-flex" id="wrapper"><!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper" *ngIf="isLoggedIn">
+      <div class="sidebar-heading">
+          <a class="navbar-brand logo_h" routerLink="/home">
+            <img src="../assets/neo.PNG" class="img-fluid" alt="" style="height: 50px;width: 100px;" />
+            <span class="small ml-3">Job Portal</span>
+          </a>
+      </div>
+      <div class="list-group list-group-flush">
+        <a routerLink="/dashboard" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a routerLink="/jobs" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">Jobs</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav  class="navbar navbar-expand-lg navbar-light bg-light border-bottom custom-navbar shadow">
+        <button class="btn btn-primary" style="background-color: transparent" id="menu-toggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <!-- <li class="nav-item active">
+                <a class="nav-link" routerLink="/register">Register <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">Notification</a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{username}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="/profile">Profile</a>
+                  <a class="dropdown-item" href="javascript:void(0)" (click)="logout()">Logout</a>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </nav>
+      <div class="container-fluid">
+          <router-outlet></router-outlet>  
+      </div>
+    </div>
+  </div>
+</div>
+<!-- for admin desing end -->

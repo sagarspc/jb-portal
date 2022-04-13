@@ -1,0 +1,11 @@
+<article class="job-card" *ngFor="let item of jobs">
+  <div class="company-logo-img">
+    <img src="../../../assets/neo.PNG" />
+  </div>
+  <div class="job-title">{{item.title}} ({{item.year}}yr exp)</div>
+  <div class="company-name">{{item.description}}</div>
+  <div class="skills-container">
+    <div class="skill">Skills : {{item.skills}}</div>
+  </div>
+  <button type="button" class="apply" (click)="applyJob(item)">Apply</button>
+</article>

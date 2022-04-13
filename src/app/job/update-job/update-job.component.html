@@ -1,0 +1,51 @@
+<div class="container pb-3">
+    <div class="table-wrapper">
+    <div class="table-title">
+        <div class="row">
+        <div class="col-sm-6">
+            <h2 class="text-white">Update <b>Job</b></h2>
+        </div>
+        <div class="col-sm-6">
+            <a routerLink="/jobs" class="btn btn-success" ><i class="fa fa-arrow-left"></i> <span>Back To Job List</span></a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label>Job Title</label>
+            <input type="text" name="title" class="form-control" [(ngModel)]="job.title">
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Job Description</label>
+            <textarea class="form-control" [(ngModel)]="job.description"></textarea>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Application Count</label>
+            <input type="text" name="appCount" class="form-control" [(ngModel)]="job.appCount">
+        </div>
+        <div class="form-group col-sm-4" >
+            <label>Skills</label>
+            <ng-multiselect-dropdown #multiSelect
+            [settings]="settings"
+            [data]="data" 
+            [placeholder]="'Select Skills'" 
+            [(ngModel)]="selectedItems"
+            [disabled]="false"
+            (onSelect)="onItemSelect($event)" 
+            (onDeSelect)="onDeSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            (onDeSelectAll)="onDeSelectAll($event)">
+              </ng-multiselect-dropdown>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Experience </label>
+            <div class="d-flex">
+                <input type="number" name="year" placeholder="Year" class="form-control mr-3" [(ngModel)]="job.year">
+                <input type="number" name="month" placeholder="Month" class="form-control" [(ngModel)]="job.month">
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-success" (click)="updateJob()" [disabled]="btnDisabled">Update Job</button>
+          
+</div>

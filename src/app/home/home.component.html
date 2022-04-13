@@ -1,0 +1,27 @@
+<div class="row" *ngIf="!isLoggedIn">
+  <div class="col-md-6 pt-4">
+      <div class="card w-100">
+          <img src="../../assets/pexels-lukas-590016.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Employer</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a routerLink="/login/employer" class="btn btn-primary">Click here to Login</a>
+          </div>
+        </div>
+  </div>
+  <div class="col-md-6 pt-4">
+      <div class="card w-100">
+          <img src="../../assets/pexels-vojtech-okenka-392018.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Job Seeker</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a routerLink="/login/seeker" class="btn btn-primary">Click here to Login</a>
+          </div>
+        </div>
+  </div>
+</div>
+<div *ngIf="isLoggedIn">
+  <app-job-list></app-job-list>
+</div>
+
+
